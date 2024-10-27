@@ -331,37 +331,68 @@ To implement this function, I had to use algebra to find out how to edit the r c
 
 I tested the new fermat function as such ->
 
+I then tested it by comparing it to the first fermat function ->
+
 Exercise 15:
+For this exercise, I carried out a simple linear search. The search starts from a value of k, and terminates when a value is found whose square is less than n but (k+1)^2 is more than n. If not, the next biggest value is tried by incrementing k and making a recursive call.
 
 > isqrt2 :: Integer -> Integer -> Integer
 > isqrt2 k n |(k+1)^2 > n && k^2 >= n = k
-> 	     | otherwise              = isqrt2 (k+1) n 
+> 	          | otherwise              = isqrt2 (k+1) n 
+
+I tested the new isqrt function as such ->
+
+I then tested it by comparing it to the first isqrt function ->
 
 Exercise 16:
+We know m^2 <= n if and only if m <= sqrt(n), as m and n are both positives, so we do not have to worry about the inequality "flipping" when dividing by a negative.
+Additionally, l < (l+r)'div'2 < r as (l+r)'div'2 is the midpoint or average between the two, so it will be larger than the smaller number and smaller than the larger number.
+I used this information to write a function. For this function, I want to find the smaller interval based on a given interval and a number to comapre to n. First, I found the midpoint of the lower and upper bound (l and r respectively) by using (l+r)'div'2 (div insures m remains an integer)
 
 > split :: (Integer, Integer) -> Integer -> (Integer, Integer)
 > split (l,r) n | m^2 <= n = (m,r)
->	        | otherwise = (l,m)
+>	              | otherwise = (l,m)
 >	where m = (l+r)`div`2
 
+I tested this function as such ->
+
+
 Exercise 17: 
+I used the function split in the previous exercise to carry our a binary search, which continues until l + 1 == r (indicating all values have been checked in the range).
 
 > binarySearch :: Integer -> (Integer, Integer) -> Integer
 > binarySearch n (l,r) | l + 1 == r = l
-> 	               | otherwise  = binarySearch n (split (l,r) n)
+> 	                    | otherwise  = binarySearch n (split (l,r) n)
+
+I then used this to write a binary search function to find isqrt, called isqrt3.
 
 > isqrt3 :: Integer -> Integer
 > isqrt3 n = binarySearch n (1,n)
 
+I tested this function as such ->
+
+I then compared it to the original isqrt function as such ->
+
+isqrt takes a binary search now, which always has a logarithmic complexity (as each time, you halve the search area). Thus, the approximate number of steps is the celining of log2(n).
 
 Exercise 18: 
+For this, I searched all powers of 2 similarly until I found a power which has a square less than n and whose next power up is more than n. 
 
 > findUpper :: Integer -> Integer -> Integer
 > findUpper b n | b <= n && (b*2) > n = b 
-> 		| otherwise = findUpper (b*2) n 
+> 		            | otherwise = findUpper (b*2) n 
+
+I then used this as my upper bound in the following isqrt function.
 
 > isqrt4 :: Integer -> Integer
 > isqrt4 n = binarySearch n (1,b)
 >	where b = findUpper 1 n
+
+I tested this function as such ->
+
+I then compared it to the original isqrt function as such ->
+
+In terms of extra steps, the first function takes the floor of log2n, but the second function then takes log2b time. This reduces the time for only much larger numbers, and thus is not necessarily worth the effort for smaller numbers.
+
 
 
