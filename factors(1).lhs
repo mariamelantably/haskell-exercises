@@ -453,6 +453,9 @@ ghci> isqrt3 100
 (0.01 secs, 69,736 bytes)
 
 I then compared it to the original isqrt function as such ->
+ghci> map isqrt3 [2..1000] == map isqrt [2..1000]
+True
+(0.03 secs, 11,830,304 bytes)
 
 isqrt takes a binary search now, which always has a logarithmic complexity (as each time, you halve the search area). Thus, the approximate number of steps is the celining of log2(n).
 
@@ -470,10 +473,35 @@ I then used this as my upper bound in the following isqrt function.
 >	where b = findUpper 1 n
 
 I tested this function as such ->
+ghci> isqrt4 3
+1
+(0.00 secs, 66,840 bytes)
+ghci> isqrt4 8
+2
+(0.00 secs, 71,320 bytes)
+ghci> isqrt4 45
+6
+(0.00 secs, 74,544 bytes)
+ghci> isqrt4 660
+25
+(0.00 secs, 81,736 bytes)
+ghci> isqrt4 790
+28
+(0.00 secs, 81,728 bytes)
+ghci> isqrt4 12
+3
+(0.00 secs, 71,328 bytes)
+ghci> isqrt4 100
+10
+(0.00 secs, 76,904 bytes)
+ghci> isqrt4 25
+5
+(0.00 secs, 72,936 bytes)
 
 I then compared it to the original isqrt function as such ->
+ghci> map isqrt4 [2..1000] == map isqrt [2..1000]
+True
+(0.03 secs, 14,167,880 bytes)
 
-In terms of extra steps, the first function takes the floor of log2n, but the second function then takes log2b time. This reduces the time for only much larger numbers, and thus is not necessarily worth the effort for smaller numbers.
-
-
+In terms of extra steps, the first function takes the floor of log2n, but the second function then takes log2b time. This means there is only a significant reduction in the time for much larger numbers, and thus is not necessarily worth the effort for smaller numbers.
 
