@@ -116,38 +116,33 @@ ghci> factor3 83
 (0.00 secs, 67,768 bytes)
 
 Test 3 - Square Numbers:
-ghci> factor3 2
-(2,1)
-(0.00 secs, 64,696 bytes)
-ghci> factor3 3
-(3,1)
-(0.00 secs, 64,752 bytes)
-ghci> factor3 5
-(5,1)
-(0.00 secs, 65,144 bytes)
-ghci> factor3 7
-(7,1)
-(0.00 secs, 65,152 bytes)
-ghci> factor3 83
-(83,1)
-(0.00 secs, 67,768 bytes)
+ghci> factor3 4
+(2,2)
+ghci> factor 25
+(5,5)
+ghci> factor3 121
+(11,11)
+ghci> factor3 49
+(7,7)
 
-Test 4 - Non-prime and Non-square Numvbers:
-ghci> factor3 2
-(2,1)
-(0.00 secs, 64,696 bytes)
-ghci> factor3 3
-(3,1)
-(0.00 secs, 64,752 bytes)
-ghci> factor3 5
-(5,1)
-(0.00 secs, 65,144 bytes)
-ghci> factor3 7
-(7,1)
-(0.00 secs, 65,152 bytes)
-ghci> factor3 83
-(83,1)
-(0.00 secs, 67,768 bytes)
+Test 4 - Non-prime and Non-square Numbers:
+ghci> factor3 120
+(2,60)
+ghci> factor3 48
+(2,24)
+ghci> factor3 88
+(2,44)
+ghci> factor3 6
+(2,3)
+ghci> factor3 99
+(3,33)
+ghci> factor3 100
+(2,50)
+ghci> factor3 20
+(2,10)
+ghci> factor3 93
+(3,31)
+
 
 Exercise 7:
 
