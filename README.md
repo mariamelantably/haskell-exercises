@@ -13,7 +13,8 @@ A collection of solutions for Haskell Exercises from various parts of the Prelim
 - Inits: gives the prefixes of a list
 - Maximums: computes the largest number in a list
 - Partitions: divdes a list into two partitions
-- Perms: computes all the permutations for a given lisrt
+- Perms: computes all the permutations for a given list
+- Song: a fun song algorithm
 
 ## Contact
 Email: mariamantably@gmail.com
