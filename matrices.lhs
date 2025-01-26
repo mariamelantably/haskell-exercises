@@ -1,5 +1,13 @@
 > type Matrix a = [[a]]
 
+> rjustify :: Int -> String -> String
+> rjustify x string = replicate (x-l) ' ' ++ string
+>   where l = length string
+
+> ljustify :: Int -> String -> String
+> ljustify x string = string ++ replicate (x-l) ' '
+>   where l = length string
+
 > scale :: Num a => a  -> Matrix a -> Matrix a
 > scale x = map (map (x*))
 
