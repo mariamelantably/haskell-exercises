@@ -1,5 +1,10 @@
 > type Matrix a = [[a]]
 
+> cols' :: [[a]] -> [[a]]
+> cols' [] = [] 
+> cols' (xs:xss) = if null as then zipWith (:) xs (replicate (length xs) []) else zipWith (:) xs as
+>   where as = cols' xss
+
 > rjustify :: Int -> String -> String
 > rjustify x string = replicate (x-l) ' ' ++ string
 >   where l = length string
